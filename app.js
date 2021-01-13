@@ -33,7 +33,7 @@ app.get("/getAll", (req, res) => {
     response.currentTeam = turn
     if(time == 30) {
         time -= 1
-        countback = setTimeout(() => {time -= 1; console.log("tick");}, 1000)
+        countback = setInterval(() => {time -= 1; console.log("tick");}, 1000)
     }
     if(time <= 0 && countback != undefined) {
         countback.clearInterval()
