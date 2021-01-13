@@ -70,7 +70,7 @@ app.put("/choosenext", (req, res) => {
 })
 
 app.get("/updatePoints", (req, res) => {
-    teams[req.query.team].points += req.query.points
+    teams[req.query.team].points += parseInt(req.query.points)
     console.log(req.query);
     res.send()
 })
