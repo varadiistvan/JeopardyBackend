@@ -36,7 +36,7 @@ app.get("/getAll", (req, res) => {
         countback = setInterval(() => {time -= 1; console.log("tick");}, 1000)
     }
     if(time <= 0 && countback != undefined) {
-        countback.clearInterval()
+        clearInterval(countback)
     }
     if(chosen) {
         response.timeStamp = time
