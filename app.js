@@ -6,7 +6,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-
+var countback
 
 var teams = {"team1": {"players": [], "points": 0}, "team2": {"players": [], "points": 0}, "team3": {"players": [], "points": 0}, "team4": {"players": [], "points": 0}, "team5": {"players": [], "points": 0}}
 
@@ -16,7 +16,7 @@ var board = [[],[],[],[],[],[],[]]
 var turn = ""
 var chosen = false
 
-var time = new Date().getSeconds()
+var time = 0
 
 
 app.get("/", (req, res) => {
@@ -31,9 +31,12 @@ app.get("/getAll", (req, res) => {
     response.teams = teams
     response.board = [["Sure", "második téma", "Génmódosítás", "negyedik téma", "ötödik téma", "hatodik téma", "hetedik téma"],[{"kérdés": "valaminagyonhosszú de tényleg, mintha igazi kérdés lenne", "status": "claimed"},{"kérdés": "Egy fajon belül adott génállományú populáció egy vagy több tagja bekerül egy másik populációba, ezzel megváltoztatva annak génállományát.	", "status": "current"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}],[{"kérdés": "Egy fajon belül adott génállományú populáció egy vagy több tagja bekerül egy másik populációba, ezzel megváltoztatva annak génállományát.	", "status": "claimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}],[{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}],[{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}],[{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}],[{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}]]
     response.currentTeam = turn
+    if(time <= 0) {
+        countback.clearInterval()
+    }
     if(chosen) {
         response.timeStamp = time
-        // console.log(time);
+        console.log(time);
     }
     res.send(response)
 })
@@ -44,9 +47,9 @@ app.put("/choosenext", (req, res) => {
         // console.log(parseInt(req.body.target[1]));
         // console.log(parseInt(req.body.target[3]));
         console.log(board[0][2])
-        time = new Date().getSeconds()
+        time = 30
         console.log(time);
-        setTimeout(() => time = false, 900)
+        countback = setTimeout(() => time -= 1, 1000)
         res.send()
     }
     else{
