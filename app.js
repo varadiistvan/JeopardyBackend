@@ -18,6 +18,7 @@ var chosen = false
 
 var time = 0
 
+var buzzes = []
 
 app.get("/", (req, res) => {
     console.log(req.query);
@@ -53,6 +54,7 @@ app.put("/choosenext", (req, res) => {
         console.log(board[0][2])
         time = 30
         console.log(time);
+        buzzes = []
         res.send()
     }
     else{
@@ -66,6 +68,17 @@ app.post("/newPlayer", (req, res) => {
     teams[req.body.team].players.push(req.body.name)
     res.send()
     console.log(teams)
+})
+
+
+app.get("/buzzedIn", (req, res) => {
+    if(time != 0) {
+        res.send()
+    }
+    else {
+        buzzes.push(req.query)
+        console.log(buzzes);
+    }
 })
 
 
