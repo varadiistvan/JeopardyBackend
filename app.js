@@ -55,7 +55,7 @@ app.get("/getAll", (req, res) => {
 app.put("/choosenext", (req, res) => {
     if(req.body.team == turn && !chosen) {
         chosen = true
-        console.log(board[parseInt(req.body.target[3])][parseInt(req.body.target[1])])
+        console.log(board[parseInt(req.body.target[1])+1][parseInt(req.body.target[3])])
         time = 40
         console.log(time);
         buzzes = []
@@ -102,6 +102,7 @@ app.get("/buzzedIn", (req, res) => {
 
 app.get("/newTurn", (req, res) => {
     chosen = false
+    time = 1
     switch(turn) {
         case "":
             turn = "team1"
