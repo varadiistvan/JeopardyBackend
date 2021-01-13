@@ -45,7 +45,9 @@ app.put("/choosenext", (req, res) => {
         // console.log(parseInt(req.body.target[3]));
         console.log(board[0][2])
         time = new Date().getSeconds()
+        console.log(time);
         setTimeout(() => time = false, 900)
+        res.send()
     }
     else{
         res.send()
