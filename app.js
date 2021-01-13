@@ -73,7 +73,7 @@ app.get("/getbuzzes", (req, res) => {
     let response = {}
     response.buzzes = buzzes
     console.log(response);
-    res.send(response)
+    res.send("helló")
 })
 
 app.get("/updatePoints", (req, res) => {
