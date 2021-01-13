@@ -49,7 +49,7 @@ app.put("/choosenext", (req, res) => {
         console.log(board[0][2])
         time = 30
         console.log(time);
-        countback = setTimeout(() => time -= 1, 1000)
+        countback = setTimeout(() => {time -= 1; console.log(time);}, 1000)
         res.send()
     }
     else{
