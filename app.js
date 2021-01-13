@@ -31,6 +31,9 @@ app.get("/getAll", (req, res) => {
     response.teams = teams
     response.board = [["Sure", "második téma", "Génmódosítás", "negyedik téma", "ötödik téma", "hatodik téma", "hetedik téma"],[{"kérdés": "valaminagyonhosszú de tényleg, mintha igazi kérdés lenne", "status": "claimed"},{"kérdés": "Egy fajon belül adott génállományú populáció egy vagy több tagja bekerül egy másik populációba, ezzel megváltoztatva annak génállományát.	", "status": "current"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}],[{"kérdés": "Egy fajon belül adott génállományú populáció egy vagy több tagja bekerül egy másik populációba, ezzel megváltoztatva annak génállományát.	", "status": "claimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}],[{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}],[{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}],[{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}],[{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"},{"kérdés": "valami", "status": "unclaimed"}]]
     response.currentTeam = turn
+    if(time == 30) {
+        countback = setTimeout(() => {time -= 1; console.log(time);}, 1000)
+    }
     if(time <= 0 && countback != undefined) {
         countback.clearInterval()
     }
@@ -49,7 +52,6 @@ app.put("/choosenext", (req, res) => {
         console.log(board[0][2])
         time = 30
         console.log(time);
-        countback = setTimeout(() => {time -= 1; console.log(time);}, 1000)
         res.send()
     }
     else{
