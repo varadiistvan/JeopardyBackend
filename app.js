@@ -69,9 +69,16 @@ app.put("/choosenext", (req, res) => {
     
 })
 
+app.get("/getbuzzes", (req, res) => {
+    let response = {}
+    response.buzzes = buzzes
+    res.send(response)
+})
+
 app.get("/updatePoints", (req, res) => {
     teams[req.query.team].points += parseInt(req.query.points)
     console.log(req.query);
+    console.log(teams);
     res.send()
 })
 
